@@ -34,22 +34,34 @@ function createGrid(height, width) {
 createGrid(16,16);
 
 let penStatus = false;
+let eraStatus = false;
+let isDrawing = false;
 
 function draw() {
-    let isDrawing = false;
     const blocks = document.querySelectorAll('.block');
     blocks.forEach((block) => {
 
         block.addEventListener('mousedown', () => {
-            if (penStatus) {
+            if (penStatus || eraStatus) {
                 isDrawing = true;
-                block.classList.add('marked');
+
+                if (penStatus) {
+                    block.classList.add('marked');
+                } 
+                if (eraStatus) {
+                    block.classList.remove('marked');
+                }
             }
         });
         
         block.addEventListener('mousemove', () => {
             if (isDrawing) {
-                block.classList.add('marked');
+                if (penStatus) {
+                    block.classList.add('marked');
+                }
+                if (eraStatus) {
+                    block.classList.remove('marked')
+                }
             }
         }) 
     })
@@ -59,16 +71,23 @@ function draw() {
     });
 }
 
-
+// if pen clicked -> eraser deactivate
+// if eraser clicked -> pen deactivate
 const penButton = document.querySelector('.pen');
+const eraButton = document.querySelector('.eraser');
+
 penButton.addEventListener('click', () => {
     penButton.classList.toggle('activate');
-    penStatus = penButton.classList.contains('activate'); //return Boolean
+    eraButton.classList.remove('activate');
+    penStatus = penButton.classList.contains('activate');
+    eraStatus = false;
 });
+eraButton.addEventListener('click', () => {
+    eraButton.classList.toggle('activate');
+    penButton.classList.remove('activate');
+    eraStatus = eraButton.classList.contains('activate');
+    penStatus = false;
+})
 
 draw();
 
-// click button
-    // toggle to activate
-        // while activate
-            // click, mousedown
