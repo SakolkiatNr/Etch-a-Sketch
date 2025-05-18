@@ -29,22 +29,18 @@ function createGrid(height, width) {
         }
     }
 
-    function markBlock() {
-        const blocks = document.querySelectorAll('.block');
-        console.log(blocks);
-        blocks.forEach((block) => {
-            block.addEventListener('mouseout', () => {
-                block.classList.add("marked");
-            } );
-        });
-    }
-    markBlock();
-
 }
 
 createGrid(16,16);
 
-
+function draw() {
+    const blocks = document.querySelectorAll('.block');
+    blocks.forEach((block) => {
+        block.addEventListener('mouseover', () => {
+            block.classList.add("marked");
+        } );
+    });
+}
 
 
 
