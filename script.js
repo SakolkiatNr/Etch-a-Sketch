@@ -17,7 +17,7 @@ function createGrid(height, width) {
     function createChildNode(parentID, column) {
         const targetParent = document.querySelector(`#row-${parentID}`);
         const childDiv = document.createElement('div');
-        childDiv.setAttribute('class', 'column');
+        childDiv.setAttribute('class', 'column block');
         childDiv.setAttribute('id', `column-${column}`)
         targetParent.appendChild(childDiv);
     }
