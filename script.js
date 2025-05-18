@@ -33,14 +33,44 @@ function createGrid(height, width) {
 
 createGrid(16,16);
 
+let penStatus = false;
+let isDrawing = false;
+
 function draw() {
     const blocks = document.querySelectorAll('.block');
     blocks.forEach((block) => {
+
+        block.addEventListener('mousedown', () => {
+            if (penStatus) {
+                isDrawing = true;
+                block.classList.add('marked');
+            }
+        });
+
+        document.addEventListener('mouseup', () => {
+            if (penStatus) {
+                isDrawing = false;
+            }
+        });
+
         block.addEventListener('mouseover', () => {
-            block.classList.add("marked");
-        } );
-    });
+            if (isDrawing) {
+                block.classList.add('marked');
+            }
+        })
+    })
 }
 
 
+const penButton = document.querySelector('.pen');
+penButton.addEventListener('click', () => {
+    penButton.classList.toggle('activate');
+    penStatus = penButton.classList.contains('activate'); //return Boolean
+});
 
+draw();
+
+// click button
+    // toggle to activate
+        // while activate
+            // click, mousedown
