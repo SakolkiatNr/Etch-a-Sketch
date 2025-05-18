@@ -4,22 +4,32 @@
         // create childe node 16 times
     // use function to create parent node 16 
 
-function createParentNode() {
+function createParentNode(row) {
     // parent div
     const target = document.querySelector('.container');
     const parentDiv = document.createElement('div');
-    parentDiv.setAttribute('class', 'vertical');
+    parentDiv.setAttribute('class', 'row');
+    parentDiv.setAttribute('id', `row-${row}`);
     target.appendChild(parentDiv);
 
 }
 
-createParentNode();
-
-function createChildNode() {
-    const targetParent = document.querySelector('.vertical');
+function createChildNode(parentID, column) {
+    const targetParent = document.querySelector(`#row-${parentID}`);
     const childDiv = document.createElement('div');
-    childDiv.setAttribute('class', 'horizontal');
+    childDiv.setAttribute('class', 'column');
+    childDiv.setAttribute('id', `column-${column}`)
     targetParent.appendChild(childDiv);
 }
 
-createChildNode();
+function createGrid(height, width) {
+    for (let i = 1; i <= height; i++) {
+        createParentNode(i);
+        for (let j = 1; j <= width; j++) {
+            createChildNode(i, j);
+        }
+    }
+}
+
+
+createGrid(16,16);
