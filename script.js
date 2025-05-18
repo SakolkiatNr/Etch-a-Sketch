@@ -34,9 +34,9 @@ function createGrid(height, width) {
 createGrid(16,16);
 
 let penStatus = false;
-let isDrawing = false;
 
 function draw() {
+    let isDrawing = false;
     const blocks = document.querySelectorAll('.block');
     blocks.forEach((block) => {
 
@@ -46,19 +46,25 @@ function draw() {
                 block.classList.add('marked');
             }
         });
-
-        document.addEventListener('mouseup', () => {
-            if (penStatus) {
-                isDrawing = false;
-            }
-        });
-
+        
         block.addEventListener('mouseover', () => {
             if (isDrawing) {
                 block.classList.add('marked');
             }
         })
+
+        block.addEventListener('mousemove', () => {
+            if (isDrawing) {
+                block.classList.add('marked');
+            }
+        }) 
+
+        
     })
+    // Stop drawing if mouse up
+    document.addEventListener('mouseup', () => {
+            isDrawing = false;
+    });
 }
 
 
