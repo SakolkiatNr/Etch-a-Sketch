@@ -34,13 +34,15 @@ createGrid(16,16);
 
 // add event listener that trigger when mouse is out of elements
 // get the id
+// add class that will style the block
 const blocks = document.querySelectorAll('.block');
 console.log(blocks);
 blocks.forEach((block) => {
     block.addEventListener('mouseout', () => {
 
-        const blockID = block.id;
-        console.log(blockID);
+        // const blockID = block.id;
+        // console.log(blockID);
+        block.classList.add("marked");
     } );
 });
 
