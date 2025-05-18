@@ -47,21 +47,13 @@ function draw() {
             }
         });
         
-        block.addEventListener('mouseover', () => {
-            if (isDrawing) {
-                block.classList.add('marked');
-            }
-        })
-
         block.addEventListener('mousemove', () => {
             if (isDrawing) {
                 block.classList.add('marked');
             }
         }) 
-
-        
     })
-    // Stop drawing if mouse up
+    // Stop drawing if mouse up anywhere
     document.addEventListener('mouseup', () => {
             isDrawing = false;
     });

@@ -25,3 +25,12 @@
 .marked {
     background-color: blue;
 }
+
+button {
+    padding: 12px;
+    background-color: grey;
+}
+
+button.activate {
+    background-color: rgb(172, 172, 172);
+}
