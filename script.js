@@ -17,7 +17,7 @@ function createGrid(height, width) {
     function createChildNode(parentID, column) {
         const targetParent = document.querySelector(`#row-${parentID}`);
         const childDiv = document.createElement('div');
-        childDiv.setAttribute('class', 'column block');
+        childDiv.setAttribute('class', 'block');
         childDiv.setAttribute('id', `column-${column}`)
         targetParent.appendChild(childDiv);
     }
@@ -30,5 +30,19 @@ function createGrid(height, width) {
     }
 }
 
-
 createGrid(16,16);
+
+// add event listener that trigger when mouse is out of elements
+// get the id
+const blocks = document.querySelectorAll('.block');
+console.log(blocks);
+blocks.forEach((block) => {
+    block.addEventListener('mouseout', () => {
+
+        const blockID = block.id;
+        console.log(blockID);
+    } );
+});
+
+
+
