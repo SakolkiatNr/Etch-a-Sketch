@@ -4,25 +4,24 @@
         // create childe node 16 times
     // use function to create parent node 16 
 
-function createParentNode(row) {
-    // parent div
-    const target = document.querySelector('.container');
-    const parentDiv = document.createElement('div');
-    parentDiv.setAttribute('class', 'row');
-    parentDiv.setAttribute('id', `row-${row}`);
-    target.appendChild(parentDiv);
-
-}
-
-function createChildNode(parentID, column) {
-    const targetParent = document.querySelector(`#row-${parentID}`);
-    const childDiv = document.createElement('div');
-    childDiv.setAttribute('class', 'column');
-    childDiv.setAttribute('id', `column-${column}`)
-    targetParent.appendChild(childDiv);
-}
-
 function createGrid(height, width) {
+
+    function createParentNode(row) {
+        const target = document.querySelector('.container');
+        const parentDiv = document.createElement('div');
+        parentDiv.setAttribute('class', 'row');
+        parentDiv.setAttribute('id', `row-${row}`);
+        target.appendChild(parentDiv);
+    }
+
+    function createChildNode(parentID, column) {
+        const targetParent = document.querySelector(`#row-${parentID}`);
+        const childDiv = document.createElement('div');
+        childDiv.setAttribute('class', 'column');
+        childDiv.setAttribute('id', `column-${column}`)
+        targetParent.appendChild(childDiv);
+    }
+
     for (let i = 1; i <= height; i++) {
         createParentNode(i);
         for (let j = 1; j <= width; j++) {
