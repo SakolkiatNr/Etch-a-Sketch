@@ -15,7 +15,7 @@ function draw() {
             isDrawing = true;
             if (penStatus) {
                 e.target.classList.add('marked');
-                e.target.style.backgroundColor = `${colorCode}`;
+                e.target.style.backgroundColor = `${penColorCode}`;
             }
             if (eraStatus) {
                 e.target.classList.remove('marked');
@@ -28,7 +28,7 @@ function draw() {
         if (e.target.classList.contains('block') && isDrawing) {
                 if (penStatus) {
                     e.target.classList.add('marked');
-                    e.target.style.backgroundColor = `${colorCode}`;
+                    e.target.style.backgroundColor = `${penColorCode}`;
                 }
                 if (eraStatus) {
                     e.target.classList.remove('marked');
@@ -123,18 +123,24 @@ function createNewGrid() {
 function resetGrid() {
     gridContainer.querySelectorAll('.block').forEach( (block) => {
         block.classList.remove('marked');
+        block.style.backgroundColor = '';
     })
 }
 const reset = document.querySelector('.reset');
 reset.addEventListener('click', resetGrid);
 
 // Create function that retrieve color data
-let colorPicker = document.querySelector('.penColor');
-let colorCode = colorPicker.value;
-// console.log(colorCode);
-colorPicker.addEventListener('input', (e) => {
-    colorCode = colorPicker.value;
-    // console.log(colorCode);
-})
+let penColorPicker = document.querySelector('.penColor');
+let bgColorPicker = document.querySelector('.backgroundColor');
+
+let penColorCode = penColorPicker.value;
+let bgColorCode = bgColorPicker.value;
+
+penColorPicker.addEventListener('input', (e) => penColorCode = e.target.value);
+bgColorPicker.addEventListener('input', (e) => {
+    bgColorCode = e.target.value
+    gridContainer.style.backgroundColor = bgColorCode;
+});
+
 createNewGrid();
 draw()
