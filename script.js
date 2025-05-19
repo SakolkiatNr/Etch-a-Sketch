@@ -84,12 +84,6 @@ function displayGridSize() {
     gridDimension.textContent = `${gridSizeInput.value} x ${gridSizeInput.value}`;
 }
 
-function createNewGrid() {
-    displayGridSize();
-    clearGrid();
-    createGrid(gridSizeInput.value, gridSizeInput.value);
-    setBlockSize();
-}
 
 function clearGrid() {
     gridContainer.querySelectorAll('.row').forEach(row => row.remove());
@@ -98,14 +92,33 @@ function clearGrid() {
 function setBlockSize() {
     const gridContainerWidth = gridContainer.clientWidth;
     let blockWidth =  gridContainerWidth / gridSizeInput.value;
-
+    
     gridContainer.querySelectorAll('.block').forEach( (block) => {
         block.style.width = `${blockWidth}px`;
         block.style.height = `${blockWidth}px`;
     })
 }
 
-createGrid(16, 16);
-displayGridSize();
-draw();
-setBlockSize();
+function createNewGrid() {
+    displayGridSize();
+    clearGrid();
+    createGrid(gridSizeInput.value, gridSizeInput.value);
+    setBlockSize();
+    draw();
+}
+
+function resetGrid() {
+    gridContainer.querySelectorAll('.block').forEach( (block) => {
+        block.classList.remove('marked');
+    })
+}
+
+const reset = document.querySelector('.reset');
+reset.addEventListener('click', resetGrid);
+
+// createGrid(16, 16);
+// displayGridSize();
+// draw();
+// setBlockSize();
+
+createNewGrid();
