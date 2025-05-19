@@ -32,10 +32,9 @@ function createGrid(height, width) {
         }
     }
 }
+const gridContainer = document.querySelector('.grid-container');
 
 function draw() {
-    const gridContainer = document.querySelector('.grid-container');
-    
     gridContainer.addEventListener('mousedown', (e) => {
         if (e.target.classList.contains('block') && (penStatus || eraStatus)) {
             isDrawing = true;
@@ -88,14 +87,16 @@ gridSizeInput.addEventListener('input', displayGridSize)
 // function that will 
     // receive grid-container width
         // set height the same as width
+const gridContainerHeight = gridContainer.clientHeight;
+const gridContainerWidth = gridContainer.clientWidth;
+console.log(gridContainerHeight);
+console.log(gridContainerWidth);
 
     // input grid size input
         // create grid-container
 
     // grid-container width / grid input -> grid-block width
         // set block width and height
-
-
 
 createGrid(16,16);
 draw();
