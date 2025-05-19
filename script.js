@@ -41,21 +41,17 @@ function draw() {
     const gridContainer = document.querySelector('.grid-container');
     
     gridContainer.addEventListener('mousedown', (e) => {
-        if (e.target.classList.contains('block')) {
-            if (penStatus || eraStatus) {
-                isDrawing = true;
-                if (penStatus) e.target.classList.add('marked');
-                if (eraStatus) e.target.classList.remove('marked');
-            }
+        if (e.target.classList.contains('block') && (penStatus || eraStatus)) {
+            isDrawing = true;
+            if (penStatus) e.target.classList.add('marked');
+            if (eraStatus) e.target.classList.remove('marked');
         }
     });
 
     gridContainer.addEventListener('mousemove' ,(e) => {
-        if (e.target.classList.contains('block')) {
-            if (isDrawing) {
+        if (e.target.classList.contains('block') && isDrawing) {
                 if (penStatus) e.target.classList.add('marked');
                 if (eraStatus) e.target.classList.remove('marked');
-            }
         } 
     })
     // Stop drawing if mouse up anywhere
