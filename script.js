@@ -28,7 +28,6 @@ function createGrid(height, width) {
             createChildNode(i, j);
         }
     }
-
 }
 
 let penStatus = false;
@@ -80,5 +79,27 @@ penButton.addEventListener('click', () => togglePrimaryTool('pen'));
 eraButton.addEventListener('click', () => togglePrimaryTool('eraser'));
 
 
+const gridSizeInput = document.querySelector('.grid-size');
+const gridDimension = document.querySelector('.grid-dimension');
+gridSizeInput.addEventListener('input', displayGridSize)
+
+
+function displayGridSize() {
+    gridDimension.textContent = `${gridSizeInput.value} x ${gridSizeInput.value}`;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 createGrid(16,16);
 draw();
+displayGridSize();
