@@ -44,40 +44,19 @@ function draw() {
         if (e.target.classList.contains('block')) {
             if (penStatus || eraStatus) {
                 isDrawing = true;
-                if (penStatus) block.classList.add('marked');
-                if (eraStatus) block.classList.remove('marked');
+                if (penStatus) e.target.classList.add('marked');
+                if (eraStatus) e.target.classList.remove('marked');
             }
         }
-    })
+    });
 
-
-
-    const blocks = document.querySelectorAll('.block');
-    blocks.forEach((block) => {
-
-        // block.addEventListener('mousedown', () => {
-        //     if (penStatus || eraStatus) {
-        //         isDrawing = true;
-
-        //         if (penStatus) {
-        //             block.classList.add('marked');
-        //         } 
-        //         if (eraStatus) {
-        //             block.classList.remove('marked');
-        //         }
-        //     }
-        // });
-        
-        block.addEventListener('mousemove', () => {
+    gridContainer.addEventListener('mousemove' ,(e) => {
+        if (e.target.classList.contains('block')) {
             if (isDrawing) {
-                if (penStatus) {
-                    block.classList.add('marked');
-                }
-                if (eraStatus) {
-                    block.classList.remove('marked')
-                }
+                if (penStatus) e.target.classList.add('marked');
+                if (eraStatus) e.target.classList.remove('marked');
             }
-        }) 
+        } 
     })
     // Stop drawing if mouse up anywhere
     document.addEventListener('mouseup', () => {
