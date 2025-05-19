@@ -31,8 +31,6 @@ function createGrid(height, width) {
 
 }
 
-createGrid(16,16);
-
 let penStatus = false;
 let eraStatus = false;
 let isDrawing = false;
@@ -53,30 +51,34 @@ function draw() {
                 if (penStatus) e.target.classList.add('marked');
                 if (eraStatus) e.target.classList.remove('marked');
         } 
-    })
+    });
     // Stop drawing if mouse up anywhere
     document.addEventListener('mouseup', () => {
             isDrawing = false;
     });
 }
 
-// if pen clicked -> eraser deactivate
-// if eraser clicked -> pen deactivate
+function togglePrimaryTool(tool) {
+    // if pen clicked -> eraser deactivate
+    // if eraser clicked -> pen deactivate
+    if (tool === 'pen') {
+        penStatus = !penStatus;
+        eraStatus = false;
+        penButton.classList.toggle('activate', penStatus);
+        eraButton.classList.remove('activate');
+    } else if (tool == 'eraser') {
+        eraStatus = !eraStatus;
+        penStatus = false;
+        eraButton.classList.toggle('activate', eraStatus);
+        penButton.classList.remove('activate');
+    }
+}
+
 const penButton = document.querySelector('.pen');
 const eraButton = document.querySelector('.eraser');
+penButton.addEventListener('click', () => togglePrimaryTool('pen'));
+eraButton.addEventListener('click', () => togglePrimaryTool('eraser'));
 
-penButton.addEventListener('click', () => {
-    penButton.classList.toggle('activate');
-    eraButton.classList.remove('activate');
-    penStatus = penButton.classList.contains('activate');
-    eraStatus = false;
-});
-eraButton.addEventListener('click', () => {
-    eraButton.classList.toggle('activate');
-    penButton.classList.remove('activate');
-    eraStatus = eraButton.classList.contains('activate');
-    penStatus = false;
-})
 
+createGrid(16,16);
 draw();
-
