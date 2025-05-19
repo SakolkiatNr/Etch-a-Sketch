@@ -7,31 +7,6 @@ let penStatus = true;
 let eraStatus = false;
 let isDrawing = false;
 
-function createGrid(height, width) {
-
-    function createParentNode(row) {
-        const target = document.querySelector('.grid-container');
-        const parentDiv = document.createElement('div');
-        parentDiv.setAttribute('class', 'row');
-        parentDiv.setAttribute('id', `row-${row}`);
-        target.appendChild(parentDiv);
-    }
-
-    function createChildNode(parentID, column) {
-        const targetParent = document.querySelector(`#row-${parentID}`);
-        const childDiv = document.createElement('div');
-        childDiv.setAttribute('class', 'block');
-        childDiv.setAttribute('id', `column-${column}`)
-        targetParent.appendChild(childDiv);
-    }
-
-    for (let i = 1; i <= height; i++) {
-        createParentNode(i);
-        for (let j = 1; j <= width; j++) {
-            createChildNode(i, j);
-        }
-    }
-}
 const gridContainer = document.querySelector('.grid-container');
 
 function draw() {
@@ -82,6 +57,31 @@ gridSizeInput.addEventListener('input', createNewGrid);
 
 
 function createNewGrid() {
+    function createGrid(height, width) {
+
+    function createParentNode(row) {
+        const target = document.querySelector('.grid-container');
+        const parentDiv = document.createElement('div');
+        parentDiv.setAttribute('class', 'row');
+        parentDiv.setAttribute('id', `row-${row}`);
+        target.appendChild(parentDiv);
+    }
+
+    function createChildNode(parentID, column) {
+        const targetParent = document.querySelector(`#row-${parentID}`);
+        const childDiv = document.createElement('div');
+        childDiv.setAttribute('class', 'block');
+        childDiv.setAttribute('id', `column-${column}`)
+        targetParent.appendChild(childDiv);
+    }
+
+    for (let i = 1; i <= height; i++) {
+        createParentNode(i);
+        for (let j = 1; j <= width; j++) {
+            createChildNode(i, j);
+        }
+    }
+}
     function displayGridSize() {
         gridDimension.textContent = `${gridSizeInput.value} x ${gridSizeInput.value}`;
     }
@@ -107,14 +107,15 @@ function createNewGrid() {
     draw();
 }
 
+
 function resetGrid() {
     gridContainer.querySelectorAll('.block').forEach( (block) => {
         block.classList.remove('marked');
     })
 }
-
 const reset = document.querySelector('.reset');
 reset.addEventListener('click', resetGrid);
+
 
 createNewGrid();
 draw()
