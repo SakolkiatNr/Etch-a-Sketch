@@ -12,18 +12,36 @@
         <h1>ETCH A SKETCH</h1>
     </div>
 
+    
+    <div class="grid-container"></div>
+    
     <div class="control-buttons">
-        <button class="primary pen activate">PEN</button>
-        <button class="primary eraser">ERASER</button>
+        <div>
+            <input type="color" class="penColor color-box" value="black" />
+            <label>COLOR</label>
+        </div>
+        <div>
+            <input type="color" class="backgroundColo color-box" value="black" />
+            <label>BG COLOR</label>
+        </div>
         <div class="grid-range">
             <input class="grid-size" type="range" min="4" max="100" value="16" />
             <label>Grid size: <span class="grid-dimension"></span></label>
         </div>
-        <button class="reset">RESET</button>
+
+        <div class="edit-panel">
+            <button class="primary pen activate">DRAW</button>
+            <button class="primary eraser">WIPE</button>
+            <button class="reset">CLEAR</button>
+        </div>
+
+        <div class="mode-panel">
+            <button class="">BOLD</button>
+            <button>SOFT</button>
+            <button>SHIFT</button>
+        </div>
+
     </div>
-
-    <div class="grid-container"></div>
-
 
     
 </body>
