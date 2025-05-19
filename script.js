@@ -130,8 +130,8 @@ const reset = document.querySelector('.reset');
 reset.addEventListener('click', resetGrid);
 
 // Create function that retrieve color data
-let penColorPicker = document.querySelector('.penColor');
-let bgColorPicker = document.querySelector('.backgroundColor');
+const penColorPicker = document.querySelector('.penColor');
+const bgColorPicker = document.querySelector('.backgroundColor');
 
 let penColorCode = penColorPicker.value;
 let bgColorCode = bgColorPicker.value;
