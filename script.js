@@ -59,12 +59,12 @@ function togglePrimaryTool(tool) {
     // if pen clicked -> eraser deactivate
     // if eraser clicked -> pen deactivate
     if (tool === 'pen') {
-        penStatus = !penStatus;
+        penStatus = true;
         eraStatus = false;
         penButton.classList.toggle('activate', penStatus);
         eraButton.classList.remove('activate');
     } else if (tool == 'eraser') {
-        eraStatus = !eraStatus;
+        eraStatus = true;
         penStatus = false;
         eraButton.classList.toggle('activate', eraStatus);
         penButton.classList.remove('activate');
@@ -80,26 +80,26 @@ const gridSizeInput = document.querySelector('.grid-size');
 const gridDimension = document.querySelector('.grid-dimension');
 gridSizeInput.addEventListener('input', createNewGrid);
 
-function displayGridSize() {
-    gridDimension.textContent = `${gridSizeInput.value} x ${gridSizeInput.value}`;
-}
-
-
-function clearGrid() {
-    gridContainer.querySelectorAll('.row').forEach(row => row.remove());
-}
-
-function setBlockSize() {
-    const gridContainerWidth = gridContainer.clientWidth;
-    let blockWidth =  gridContainerWidth / gridSizeInput.value;
-    
-    gridContainer.querySelectorAll('.block').forEach( (block) => {
-        block.style.width = `${blockWidth}px`;
-        block.style.height = `${blockWidth}px`;
-    })
-}
 
 function createNewGrid() {
+    function displayGridSize() {
+        gridDimension.textContent = `${gridSizeInput.value} x ${gridSizeInput.value}`;
+    }
+    
+    function clearGrid() {
+        gridContainer.querySelectorAll('.row').forEach(row => row.remove());
+    }
+    
+    function setBlockSize() {
+        const gridContainerWidth = gridContainer.clientWidth;
+        let blockWidth =  gridContainerWidth / gridSizeInput.value;
+        
+        gridContainer.querySelectorAll('.block').forEach( (block) => {
+            block.style.width = `${blockWidth}px`;
+            block.style.height = `${blockWidth}px`;
+        })
+    }
+
     displayGridSize();
     clearGrid();
     createGrid(gridSizeInput.value, gridSizeInput.value);
@@ -115,10 +115,5 @@ function resetGrid() {
 
 const reset = document.querySelector('.reset');
 reset.addEventListener('click', resetGrid);
-
-// createGrid(16, 16);
-// displayGridSize();
-// draw();
-// setBlockSize();
 
 createNewGrid();

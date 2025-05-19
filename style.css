@@ -17,7 +17,7 @@
 
 .block {
     box-sizing: border-box;
-    border: solid 0.5px blue;
+    border: solid 0.1px rgb(221, 221, 221);
     height: auto;
     width: auto;
 }
