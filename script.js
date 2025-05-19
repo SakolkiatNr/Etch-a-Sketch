@@ -76,28 +76,36 @@ const eraButton = document.querySelector('.eraser');
 penButton.addEventListener('click', () => togglePrimaryTool('pen'));
 eraButton.addEventListener('click', () => togglePrimaryTool('eraser'));
 
+const gridSizeInput = document.querySelector('.grid-size');
+const gridDimension = document.querySelector('.grid-dimension');
+gridSizeInput.addEventListener('input', createNewGrid);
+
 function displayGridSize() {
     gridDimension.textContent = `${gridSizeInput.value} x ${gridSizeInput.value}`;
 }
 
-const gridSizeInput = document.querySelector('.grid-size');
-const gridDimension = document.querySelector('.grid-dimension');
-gridSizeInput.addEventListener('input', displayGridSize)
+function createNewGrid() {
+    displayGridSize();
+    clearGrid();
+    createGrid(gridSizeInput.value, gridSizeInput.value);
+    setBlockSize();
+}
 
-// function that will 
-    // receive grid-container width
-        // set height the same as width
-const gridContainerHeight = gridContainer.clientHeight;
-const gridContainerWidth = gridContainer.clientWidth;
-console.log(gridContainerHeight);
-console.log(gridContainerWidth);
+function clearGrid() {
+    gridContainer.querySelectorAll('.row').forEach(row => row.remove());
+}
 
-    // input grid size input
-        // create grid-container
+function setBlockSize() {
+    const gridContainerWidth = gridContainer.clientWidth;
+    let blockWidth =  gridContainerWidth / gridSizeInput.value;
 
-    // grid-container width / grid input -> grid-block width
-        // set block width and height
+    gridContainer.querySelectorAll('.block').forEach( (block) => {
+        block.style.width = `${blockWidth}px`;
+        block.style.height = `${blockWidth}px`;
+    })
+}
 
-createGrid(16,16);
-draw();
+createGrid(16, 16);
 displayGridSize();
+draw();
+setBlockSize();
