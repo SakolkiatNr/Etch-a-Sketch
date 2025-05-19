@@ -3,7 +3,7 @@
         // a function that create child node 
         // create childe node 16 times
     // use function to create parent node 16 
-let penStatus = false;
+let penStatus = true;
 let eraStatus = false;
 let isDrawing = false;
 
@@ -117,3 +117,4 @@ const reset = document.querySelector('.reset');
 reset.addEventListener('click', resetGrid);
 
 createNewGrid();
+draw()
