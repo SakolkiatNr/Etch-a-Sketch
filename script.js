@@ -3,6 +3,9 @@
         // a function that create child node 
         // create childe node 16 times
     // use function to create parent node 16 
+let penStatus = false;
+let eraStatus = false;
+let isDrawing = false;
 
 function createGrid(height, width) {
 
@@ -29,10 +32,6 @@ function createGrid(height, width) {
         }
     }
 }
-
-let penStatus = false;
-let eraStatus = false;
-let isDrawing = false;
 
 function draw() {
     const gridContainer = document.querySelector('.grid-container');
@@ -78,25 +77,23 @@ const eraButton = document.querySelector('.eraser');
 penButton.addEventListener('click', () => togglePrimaryTool('pen'));
 eraButton.addEventListener('click', () => togglePrimaryTool('eraser'));
 
+function displayGridSize() {
+    gridDimension.textContent = `${gridSizeInput.value} x ${gridSizeInput.value}`;
+}
 
 const gridSizeInput = document.querySelector('.grid-size');
 const gridDimension = document.querySelector('.grid-dimension');
 gridSizeInput.addEventListener('input', displayGridSize)
 
+// function that will 
+    // receive grid-container width
+        // set height the same as width
 
-function displayGridSize() {
-    gridDimension.textContent = `${gridSizeInput.value} x ${gridSizeInput.value}`;
-}
+    // input grid size input
+        // create grid-container
 
-
-
-
-
-
-
-
-
-
+    // grid-container width / grid input -> grid-block width
+        // set block width and height
 
 
 
