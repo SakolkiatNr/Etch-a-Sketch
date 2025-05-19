@@ -7,7 +7,7 @@
 function createGrid(height, width) {
 
     function createParentNode(row) {
-        const target = document.querySelector('.container');
+        const target = document.querySelector('.grid-container');
         const parentDiv = document.createElement('div');
         parentDiv.setAttribute('class', 'row');
         parentDiv.setAttribute('id', `row-${row}`);
@@ -38,21 +38,35 @@ let eraStatus = false;
 let isDrawing = false;
 
 function draw() {
+    const gridContainer = document.querySelector('.grid-container');
+    
+    gridContainer.addEventListener('mousedown', (e) => {
+        if (e.target.classList.contains('block')) {
+            if (penStatus || eraStatus) {
+                isDrawing = true;
+                if (penStatus) block.classList.add('marked');
+                if (eraStatus) block.classList.remove('marked');
+            }
+        }
+    })
+
+
+
     const blocks = document.querySelectorAll('.block');
     blocks.forEach((block) => {
 
-        block.addEventListener('mousedown', () => {
-            if (penStatus || eraStatus) {
-                isDrawing = true;
+        // block.addEventListener('mousedown', () => {
+        //     if (penStatus || eraStatus) {
+        //         isDrawing = true;
 
-                if (penStatus) {
-                    block.classList.add('marked');
-                } 
-                if (eraStatus) {
-                    block.classList.remove('marked');
-                }
-            }
-        });
+        //         if (penStatus) {
+        //             block.classList.add('marked');
+        //         } 
+        //         if (eraStatus) {
+        //             block.classList.remove('marked');
+        //         }
+        //     }
+        // });
         
         block.addEventListener('mousemove', () => {
             if (isDrawing) {
