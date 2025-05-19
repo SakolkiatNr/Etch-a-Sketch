@@ -13,15 +13,27 @@ function draw() {
     gridContainer.addEventListener('mousedown', (e) => {
         if (e.target.classList.contains('block') && (penStatus || eraStatus)) {
             isDrawing = true;
-            if (penStatus) e.target.classList.add('marked');
-            if (eraStatus) e.target.classList.remove('marked');
+            if (penStatus) {
+                e.target.classList.add('marked');
+                e.target.style.backgroundColor = `${colorCode}`;
+            }
+            if (eraStatus) {
+                e.target.classList.remove('marked');
+                e.target.style.backgroundColor = '';
+            }
         }
     });
 
     gridContainer.addEventListener('mousemove' ,(e) => {
         if (e.target.classList.contains('block') && isDrawing) {
-                if (penStatus) e.target.classList.add('marked');
-                if (eraStatus) e.target.classList.remove('marked');
+                if (penStatus) {
+                    e.target.classList.add('marked');
+                    e.target.style.backgroundColor = `${colorCode}`;
+                }
+                if (eraStatus) {
+                    e.target.classList.remove('marked');
+                    e.target.style.backgroundColor = '';
+                }
         } 
     });
     // Stop drawing if mouse up anywhere
@@ -116,6 +128,13 @@ function resetGrid() {
 const reset = document.querySelector('.reset');
 reset.addEventListener('click', resetGrid);
 
-
+// Create function that retrieve color data
+let colorPicker = document.querySelector('.penColor');
+let colorCode = colorPicker.value;
+// console.log(colorCode);
+colorPicker.addEventListener('input', (e) => {
+    colorCode = colorPicker.value;
+    // console.log(colorCode);
+})
 createNewGrid();
 draw()
