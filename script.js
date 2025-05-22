@@ -15,10 +15,16 @@ function draw() {
             isDrawing = true;
             if (penStatus) {
                 e.target.classList.add('marked');
-                e.target.style.backgroundColor = `${penColorCode}`;
+                
                 if (rainbowMode) {
                     e.target.style.backgroundColor = `${getRandomHex()}`;
                 }
+
+                if (bolderMode) {
+                    increaseOpacity(e.target);
+                }
+                e.target.style.backgroundColor = `${penColorCode}`;
+
             }
             if (eraStatus) {
                 e.target.classList.remove('marked');
@@ -203,6 +209,14 @@ function toggleMode(mode) {
     console.log(`bolder mode: ${bolderMode}`);
     console.log(`soften mode: ${softenMode}`);
     console.log('');
+}
+
+function increaseOpacity(target) {
+    // a progressive darkening effect where each interaction darkens the square by 10%
+    let currentOpacity = parseFloat(target.style.opacity) || 0;
+    // opacity value don't exceed 1
+    currentOpacity = Math.min(currentOpacity + 0.1, 1);
+    target.style.opacity = currentOpacity;
 }
 
 let rainbowMode = false;
