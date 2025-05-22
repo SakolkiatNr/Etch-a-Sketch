@@ -25,12 +25,14 @@ body {
     font-style: italic;
     letter-spacing: 2px;
     margin: 0px 0px 0px;
+    text-shadow: 1px 1px rgb(38, 38, 38);
 }
 
 #under-name {
     font-family: Georgia, 'Times New Roman', Times, serif;
     letter-spacing: 0.5px;
     margin: 6px 0px 24px 0px;
+    text-shadow: 1px 1px rgb(71, 71, 71);
 }
 
 .row {
