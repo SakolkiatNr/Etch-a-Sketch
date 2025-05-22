@@ -15,16 +15,30 @@ function draw() {
             isDrawing = true;
             if (penStatus) {
                 e.target.classList.add('marked');
-                
-                if (rainbowMode) {
-                    e.target.style.backgroundColor = `${getRandomHex()}`;
+                if (rainbowMode || bolderMode || softenMode) {
+                    if (rainbowMode) {
+                        e.target.style.backgroundColor = `${getRandomHex()}`;
+                        e.target.style.opacity = 1;
+                    }
+                    if (bolderMode) {
+                        // set to default color
+                        if (!e.target.style.backgroundColor) {
+                            e.target.style.backgroundColor = penColorCode;
+                            e.target.style.opacity = 0;
+                        }
+                        e.target.style.opacity = increaseOpacity(e.target);
+                    }
+                    if (softenMode) {
+                        const currentBg = getComputedStyle(e.target).background;
+                        // if block background is not NaN
+                        if (currentBg !== 'transparent' || currentBg !== 'rgba(0, 0, 0, 0)') {
+                            e.target.style.opacity = decreaseOpacity(e.target);
+                        }
+                    }
+                } else {
+                    e.target.style.backgroundColor = `${penColorCode}`;
+                    e.target.style.opacity = 1;
                 }
-
-                if (bolderMode) {
-                    increaseOpacity(e.target);
-                }
-                e.target.style.backgroundColor = `${penColorCode}`;
-
             }
             if (eraStatus) {
                 e.target.classList.remove('marked');
@@ -33,14 +47,34 @@ function draw() {
         }
     });
 
-    gridContainer.addEventListener('mousemove' ,(e) => {
+    gridContainer.addEventListener('mouseover' ,(e) => {
         if (e.target.classList.contains('block') && isDrawing) {
                 if (penStatus) {
                     e.target.classList.add('marked');
-                    e.target.style.backgroundColor = `${penColorCode}`;
-                    if (rainbowMode) {
-                    e.target.style.backgroundColor = `${getRandomHex()}`;
-                }
+                    if (rainbowMode || bolderMode || softenMode) {
+                        if (rainbowMode) {
+                            e.target.style.backgroundColor = `${getRandomHex()}`;
+                            e.target.style.opacity = 1;
+                        }
+                        if (bolderMode) {
+                            // set to default color
+                            if (!e.target.style.backgroundColor) {
+                                e.target.style.backgroundColor = penColorCode;
+                                e.target.style.opacity = 0;
+                            }
+                            e.target.style.opacity = increaseOpacity(e.target);
+                        }
+                        if (softenMode) {
+                            const currentBg = getComputedStyle(e.target).background;
+                            // if block background is not NaN
+                            if (currentBg !== 'transparent' || currentBg !== 'rgba(0, 0, 0, 0)') {
+                                e.target.style.opacity = decreaseOpacity(e.target);
+                            }
+                        }
+                    } else {
+                        e.target.style.backgroundColor = `${penColorCode}`;
+                        e.target.style.opacity = 1;
+                    }
                 }
                 if (eraStatus) {
                     e.target.classList.remove('marked');
@@ -141,7 +175,7 @@ function resetGrid() {
 const reset = document.querySelector('.reset');
 reset.addEventListener('click', resetGrid);
 
-// Color feature
+// Color-pick feature
 const penColorPicker = document.querySelector('.penColor');
 const bgColorPicker = document.querySelector('.backgroundColor');
 let penColorCode = penColorPicker.value;
@@ -213,10 +247,23 @@ function toggleMode(mode) {
 
 function increaseOpacity(target) {
     // a progressive darkening effect where each interaction darkens the square by 10%
-    let currentOpacity = parseFloat(target.style.opacity) || 0;
-    // opacity value don't exceed 1
-    currentOpacity = Math.min(currentOpacity + 0.1, 1);
-    target.style.opacity = currentOpacity;
+    let currentOpacity = parseFloat(target.style.opacity);
+    if (isNaN(currentOpacity)) currentOpacity = 0;
+    let newOpacity = Math.min(currentOpacity + 0.05, 1);
+    console.log(`Opacity after increased: ${+newOpacity.toFixed(2)}`);
+    return +newOpacity.toFixed(2);
+}
+
+function decreaseOpacity(target) {
+    // a progressive lightening effect where each interaction lighten the square by 10%
+    let currentOpacity = parseFloat(target.style.opacity);
+    if (isNaN(currentOpacity)) {
+        currentOpacity = parseFloat(getComputedStyle(target).opacity);
+    };
+    console.log(currentOpacity);
+    let newOpacity = Math.max(currentOpacity - 0.05, 0);
+    console.log(`Opacity after increased: ${+newOpacity.toFixed(2)}`);
+    return +newOpacity.toFixed(2);
 }
 
 let rainbowMode = false;
