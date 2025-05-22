@@ -16,6 +16,9 @@ function draw() {
             if (penStatus) {
                 e.target.classList.add('marked');
                 e.target.style.backgroundColor = `${penColorCode}`;
+                if (rainbowMode) {
+                    e.target.style.backgroundColor = `${getRandomHex()}`;
+                }
             }
             if (eraStatus) {
                 e.target.classList.remove('marked');
@@ -29,6 +32,9 @@ function draw() {
                 if (penStatus) {
                     e.target.classList.add('marked');
                     e.target.style.backgroundColor = `${penColorCode}`;
+                    if (rainbowMode) {
+                    e.target.style.backgroundColor = `${getRandomHex()}`;
+                }
                 }
                 if (eraStatus) {
                     e.target.classList.remove('marked');
@@ -171,6 +177,8 @@ function toggleMode(mode) {
         rainbowButton.classList.toggle('activate');
         bolderButton.classList.remove('activate');
         softenButton.classList.remove('activate');
+        if (!rainbowButton.classList.contains('activate')) rainbowMode = false;
+        
     } else if (mode === 'bolder') {
         bolderMode = true;
         softenMode = false;
@@ -178,6 +186,8 @@ function toggleMode(mode) {
         bolderButton.classList.toggle('activate');
         softenButton.classList.remove('activate');
         rainbowButton.classList.remove('activate');
+        if (!bolderButton.classList.contains('activate')) bolderMode = false;
+        
     } else if (mode === 'soften') {
         softenMode = true;
         bolderMode = false;
@@ -185,7 +195,14 @@ function toggleMode(mode) {
         softenButton.classList.toggle('activate');
         bolderButton.classList.remove('activate');
         rainbowButton.classList.remove('activate');
+        if (!softenButton.classList.contains('activate')) softenMode = false;
     }
+    // check mode
+    console.log('mode status')
+    console.log(`rainbow mode: ${rainbowMode}`)
+    console.log(`bolder mode: ${bolderMode}`);
+    console.log(`soften mode: ${softenMode}`);
+    console.log('');
 }
 
 let rainbowMode = false;
