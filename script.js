@@ -113,7 +113,6 @@ const gridSizeInput = document.querySelector('.grid-size');
 const gridDimension = document.querySelector('.grid-dimension');
 gridSizeInput.addEventListener('input', createNewGrid);
 
-
 function createNewGrid() {
     function createGrid(height, width) {
 
@@ -165,7 +164,6 @@ function createNewGrid() {
     draw();
 }
 
-
 function resetGrid() {
     gridContainer.querySelectorAll('.block').forEach( (block) => {
         block.classList.remove('marked');
@@ -185,19 +183,7 @@ penColorPicker.addEventListener('input', (e) => penColorCode = e.target.value);
 bgColorPicker.addEventListener('input', (e) => {
     bgColorCode = e.target.value
     gridContainer.style.backgroundColor = bgColorCode;
-});
-
-
-// rainbow function
-    // generate hex function
-    // when drawing
-    // generate hex
-    // if mode is on
-    // background color = random hex
-    // write css to make botton hover rainbow (animate)
-    
-// darken color by 10% function
-// soften color by 10% function
+});    
 
 function getRandomHex() {
     const hexLetters = "0123456789ABCDEF"

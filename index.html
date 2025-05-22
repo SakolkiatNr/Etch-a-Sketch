@@ -8,40 +8,53 @@
     <script src="script.js" defer></script>
 </head>
 <body>
-    <div class="logo">
-        <h1>SKETRIX</h1>
-        <p>DIGITAL EXPRESSION INTERFACE</p>
+    
+    <div class="container">
+        <div class="logo">
+            <h1 id="name">SKETRIX</h1>
+            <p id="under-name">DIGITAL EXPRESSION INTERFACE</p>
+        </div>
+    
+        <div class="grid-container">
+
     </div>
 
-    
-    <div class="grid-container"></div>
+
+    </div>
     
     <div class="control-buttons">
-        <div>
-            <input type="color" class="penColor color-control" value="#e34234" />
-            <label>COLOR</label>
-        </div>
-        <div>
-            <input type="color" class="backgroundColor color-control" value="#eee4d1" />
-            <label>BG COLOR</label>
-        </div>
-
-        <div class="grid-range">
-            <input class="grid-size" type="range" min="4" max="100" value="16" />
-            <label>Grid: <span class="grid-dimension"></span></label>
-        </div>
-
-        <div class="edit-panel">
-            <button class="primary pen activate">DRAW</button>
-            <button class="primary eraser">WIPE</button>
-            <button class="reset">CLEAR</button>
+        <div class="grid-control">
+            <div class="control-container">
+                <input type="color" class="penColor color-control" value="#e34234" />
+                <label>COLOR</label>
+            </div>
+    
+            <div class="grid-range">
+                <label>Grid: <span class="grid-dimension"></span></label>
+                <input class="grid-size" type="range" min="4" max="100" value="16" />
+            </div>
+    
+            <div class="control-container">
+                <input type="color" class="backgroundColor color-control" value="#eee4d1" />
+                <label>BG COLOR</label>
+            </div>
         </div>
 
-        <div class="mode-panel">
-            <button class="bolder">BOLD</button>
-            <button class="soften">SOFT</button>
-            <button class="rainbow">SHIFT</button>
+
+        <div class="control-panel">
+            <div class="edit-panel">
+                <button class="primary pen activate">DRAW</button>
+                <button class="primary eraser">WIPE</button>
+                <button class="reset">CLEAR</button>
+            </div>
+    
+            <div class="mode-panel">
+                <button class="bolder">BOLD</button>
+                <button class="soften">SOFT</button>
+                <button class="rainbow">SHIFT</button>
+            </div>
         </div>
+
 
     </div>
 

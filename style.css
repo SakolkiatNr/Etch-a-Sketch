@@ -1,3 +1,6 @@
+/* Imported Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap');
+
 body {
     display: flex;
     flex-direction: column;
@@ -6,8 +9,27 @@ body {
     color: white;
 }
 .logo {
-    color: wheat;
+    padding-top: 24px;
+    margin: 12px 0px;
+    font-family: merriweather, sans-serif;
+    color: whitesmoke;
+    /* border: solid 2px red; */
 }
+
+#name {
+    color: rgb(255, 98, 0);
+    font-style: italic;
+    letter-spacing: 2px;
+    margin: 12px 0px 0px 0px;
+}
+
+#under-name {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    letter-spacing: 0.5px;
+    margin: 6px 0px 24px 0px;
+}
+
+
 .grid-container {
     display: flex;
     flex-direction: column;
@@ -50,4 +72,58 @@ button {
 
 button.activate {
     background-color: rgb(172, 172, 172);
+}
+
+.grid-control {
+    /* border: solid 2px red; */
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+}
+/* color input */
+.color-control {
+    padding: 0px;
+    margin: 0px;
+    width: 70px;
+    height: 70px;
+    /* border: solid 7px black; */
+    border-radius: 50%;
+    background-color: transparent;
+    cursor: pointer;
+    overflow: hidden;
+    -webkit-appearance: none;
+    appearance: none;
+    box-shadow: 3px 3px 0px rgb(31, 30, 30);
+}
+
+.color-control::-webkit-color-swatch-wrapper {
+    padding: 0;
+}
+.color-control::-webkit-color-swatch {
+    border: none;
+    border-radius: 50%;
+}
+
+/* grid range input */
+.grid-range {
+    display: flex;
+    flex-direction: column;
+}
+
+.grid-dimension {
+    background-color: orange;
+}
+.control-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.control-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* border: solid 2px red; */
+
 }
