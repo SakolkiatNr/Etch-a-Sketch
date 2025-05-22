@@ -209,3 +209,41 @@ button.activate {
     background-color: rgb(226, 226, 226);
     box-shadow: inset 1px 1px 2px black;
 }
+/* rainbow button */
+.rainbow {
+    position: relative;
+    z-index: 0;
+}
+
+.rainbow::before {
+    content: "";
+    position: absolute;
+    /* random color background */
+    background-image: linear-gradient(45deg,
+        #f82553,#fb6640, #f8c421, #49cc5c, 
+        #2c7ce5, #6434e9, #ec368d);
+    top: -4px;
+    left: -4px;
+    background-size: 600%;
+    z-index: -1;
+    width: calc(100% + 10px);
+    height: calc(100% + 10px);
+    filter: blur(8px);
+    animation: glowing 25s linear infinite;
+    transition: opacity .3s ease-in-out;
+    opacity: 0;
+}
+.rainbow:hover::before {
+    opacity: 1;
+}
+
+.rainbow.activate::before {
+    opacity: 1;
+}
+
+@keyframes glowing {
+    /* run the background horizontally */
+    0% {background-position: 0 0;}
+    50% {background-position: 400% 0;}
+    100% {background-position: 0 0;}
+}
