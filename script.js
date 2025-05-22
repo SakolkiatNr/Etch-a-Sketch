@@ -161,13 +161,42 @@ function getRandomHex() {
     }
     return hexColor;
 }
-console.log(getRandomHex());
-console.log(getRandomHex());
-console.log(getRandomHex());
-console.log(getRandomHex());
-console.log(getRandomHex());
-console.log(getRandomHex());
 
+function toggleMode(mode) {
+    // activate one mode at a time
+    if (mode === 'rainbow') {
+        rainbowMode = true;
+        bolderMode = false;
+        softenMode = false;
+        rainbowButton.classList.toggle('activate');
+        bolderButton.classList.remove('activate');
+        softenButton.classList.remove('activate');
+    } else if (mode === 'bolder') {
+        bolderMode = true;
+        softenMode = false;
+        rainbowMode = false;
+        bolderButton.classList.toggle('activate');
+        softenButton.classList.remove('activate');
+        rainbowButton.classList.remove('activate');
+    } else if (mode === 'soften') {
+        softenMode = true;
+        bolderMode = false;
+        rainbowMode = false;
+        softenButton.classList.toggle('activate');
+        bolderButton.classList.remove('activate');
+        rainbowButton.classList.remove('activate');
+    }
+}
+
+let rainbowMode = false;
+let bolderMode = false;
+let softenMode = false;
+const rainbowButton = document.querySelector('.rainbow');
+const bolderButton = document.querySelector('.bolder');
+const softenButton = document.querySelector('.soften');
+rainbowButton.addEventListener('click', () => toggleMode('rainbow'));
+bolderButton.addEventListener('click', () => toggleMode('bolder'));
+softenButton.addEventListener('click', () => toggleMode('soften'));
 // create mode display using event dispatch
 // add button click sound
 // only use one mode at a time
