@@ -153,6 +153,20 @@ bgColorPicker.addEventListener('input', (e) => {
 // darken color by 10% function
 // soften color by 10% function
 
+function getRandomHex() {
+    const hexLetters = "0123456789ABCDEF"
+    let hexColor = '#';
+    for (let i = 0; i < 6; i++) {
+        hexColor += hexLetters[Math.floor(Math.random() * hexLetters.length)];
+    }
+    return hexColor;
+}
+console.log(getRandomHex());
+console.log(getRandomHex());
+console.log(getRandomHex());
+console.log(getRandomHex());
+console.log(getRandomHex());
+console.log(getRandomHex());
 
 // create mode display using event dispatch
 // add button click sound
