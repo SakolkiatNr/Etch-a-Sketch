@@ -129,10 +129,9 @@ function resetGrid() {
 const reset = document.querySelector('.reset');
 reset.addEventListener('click', resetGrid);
 
-// Create function that retrieve color data
+// Color feature
 const penColorPicker = document.querySelector('.penColor');
 const bgColorPicker = document.querySelector('.backgroundColor');
-
 let penColorCode = penColorPicker.value;
 let bgColorCode = bgColorPicker.value;
 
@@ -141,6 +140,23 @@ bgColorPicker.addEventListener('input', (e) => {
     bgColorCode = e.target.value
     gridContainer.style.backgroundColor = bgColorCode;
 });
+
+
+// rainbow function
+    // generate hex function
+    // when drawing
+    // generate hex
+    // if mode is on
+    // background color = random hex
+    // write css to make botton hover rainbow (animate)
+    
+// darken color by 10% function
+// soften color by 10% function
+
+
+// create mode display using event dispatch
+// add button click sound
+// only use one mode at a time
 
 createNewGrid();
 draw()
