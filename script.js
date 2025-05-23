@@ -156,7 +156,6 @@ function createNewGrid() {
     clearGrid();
     createGrid(gridSizeInput.value, gridSizeInput.value);
     setBlockSize();
-    draw();
 }
 
 function resetGrid() {
