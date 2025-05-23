@@ -268,8 +268,9 @@ rainbowButton.addEventListener('click', () => toggleMode('rainbow'));
 bolderButton.addEventListener('click', () => toggleMode('bolder'));
 softenButton.addEventListener('click', () => toggleMode('soften'));
 
-
+// add loading event listener
 document.addEventListener('DOMContentLoaded', () => {
     createNewGrid();
     playButtonClickSound();
+    draw();
 })
