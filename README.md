@@ -1,5 +1,6 @@
 # SKETRIX
 ## Preview
+![demo](/resource/preview/livepreview.gif)
 
 ## Overview
 A modern and interactive grid-based sketch app built with Vanilla JavaScript,CSS and HTML. Inspired by the classic Etch-a-Sketch, SKETRIX lets you draw pixel-style art with fun modes and tools.
