@@ -1,8 +1,3 @@
-// Create a function that generate 16 x 16 divs elements
-    // function that create parent node
-        // a function that create child node 
-        // create childe node 16 times
-    // use function to create parent node 16 
 let penStatus = true;
 let eraStatus = false;
 let isDrawing = false;
@@ -252,6 +247,18 @@ function decreaseOpacity(target) {
     return +newOpacity.toFixed(2);
 }
 
+function playButtonClickSound() {
+    const audio = new Audio('resource/sound/button-clicked.mp3');
+    const buttons = document.querySelectorAll('button');
+
+    buttons.forEach(button => {
+        button.addEventListener('click', () => {
+            audio.currentTime = 0;
+            audio.play();
+        });
+    });
+}
+
 let rainbowMode = false;
 let bolderMode = false;
 let softenMode = false;
@@ -261,9 +268,9 @@ const softenButton = document.querySelector('.soften');
 rainbowButton.addEventListener('click', () => toggleMode('rainbow'));
 bolderButton.addEventListener('click', () => toggleMode('bolder'));
 softenButton.addEventListener('click', () => toggleMode('soften'));
-// create mode display using event dispatch
-// add button click sound
-// only use one mode at a time
 
-createNewGrid();
-draw()
+
+document.addEventListener('DOMContentLoaded', () => {
+    createNewGrid();
+    playButtonClickSound();
+})
